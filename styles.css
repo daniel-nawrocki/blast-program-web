@@ -1,0 +1,277 @@
+:root {
+  --bg: #1f4fa3;
+  --title: #1a202c;
+  --body: #2d3748;
+  --panel-bg: #ffffff;
+  --panel-border: #e2e8f0;
+  --btn-primary-bg: #1f6feb;
+  --btn-primary-border: #1b5ec9;
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-border: #cbd5e0;
+  --btn-card-bg: #d1d5db;
+  --btn-card-border: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--body);
+}
+
+.app-shell {
+  width: min(960px, 100% - 24px);
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.page-title {
+  margin: 0;
+  color: var(--title);
+  font-size: clamp(2rem, 4vw, 29px);
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.btn {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.primary {
+  color: #f8fafc;
+  background: var(--btn-primary-bg);
+  border-color: var(--btn-primary-border);
+}
+
+.btn.secondary {
+  color: #1f2937;
+  background: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-border);
+}
+
+.btn.card {
+  color: #1a202c;
+  background: var(--btn-card-bg);
+  border-color: var(--btn-card-border);
+  border-radius: 12px;
+  min-height: 92px;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+.link-btn {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:hover {
+  filter: brightness(0.96);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(220px, 2fr);
+  gap: 10px 16px;
+  align-items: center;
+}
+
+.form-grid input {
+  width: 100%;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.form-grid select {
+  width: 100%;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+  background: #fff;
+}
+
+.body-text {
+  margin: 0;
+  line-height: 1.35;
+  font-size: 14px;
+}
+
+.result {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.footer-row {
+  margin-top: auto;
+}
+
+.split-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  color: #1a202c;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 14px;
+}
+
+.metric-value {
+  margin: 4px 0 0;
+  color: var(--title);
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.kv-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(120px, 1fr);
+  gap: 6px 14px;
+  align-items: center;
+}
+
+.kv-grid p {
+  margin: 0;
+}
+
+.kv-grid.compact {
+  grid-template-columns: minmax(180px, 1fr) minmax(260px, 2fr);
+}
+
+.gassing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 8px 10px;
+  align-items: center;
+}
+
+.gassing-grid input,
+.gassing-grid select {
+  width: 100%;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font: inherit;
+  background: #fff;
+}
+
+.checkline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.inline-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chart-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.stacked-chart {
+  min-height: 260px;
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  padding: 6px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.stack-segment {
+  color: #111827;
+  font-size: 11px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2px;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(960px, 100% - 16px);
+  }
+
+  .card-grid,
+  .form-grid,
+  .split-cols,
+  .hero-grid,
+  .kv-grid,
+  .gassing-grid,
+  .chart-wrap {
+    grid-template-columns: 1fr;
+  }
+}
