@@ -36,6 +36,10 @@ body {
   gap: 20px;
 }
 
+.screen[hidden] {
+  display: none;
+}
+
 .page-header {
   display: flex;
   flex-direction: column;
