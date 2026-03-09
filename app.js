@@ -94,9 +94,10 @@
     return Boolean(value);
   }
 
-  function formatPpvResult(dynoPpv) {
+  function formatPpvResult(dynoPpv, scaleDistance) {
     return [
       `PPV: ${dynoPpv.toFixed(4)} in/sec`,
+      `Scale Distance: ${scaleDistance.toFixed(4)}`,
     ].join("\n");
   }
 
@@ -116,7 +117,7 @@
     const usbmBestFitPpv = 119.0 * (sd ** -1.52);
     const quarryUpperBoundPpv = 138.0 * (sd ** -1.38);
 
-    ppvResult.textContent = formatPpvResult(dynoPpv);
+    ppvResult.textContent = formatPpvResult(dynoPpv, sd);
   }
 
   function calculateAdjustedSiteFactor() {
