@@ -478,6 +478,10 @@
   }
 
   function calculateGassing() {
+    if (window.matchMedia("(max-width: 720px)").matches) {
+      gasAltNeededInput.checked = false;
+      gasAltDiameterInput.disabled = true;
+    }
     const values = buildRuntimeValues();
     const runtimeFormulas = { ...gassingFormulaMap };
 

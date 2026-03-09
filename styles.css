@@ -560,6 +560,12 @@ body::before {
     margin-right: 0;
   }
 
+  .alt-needed-line,
+  .alt-diameter-label,
+  .alt-diameter-input {
+    display: none;
+  }
+
   .gassing-grid-spacer {
     display: none;
   }
