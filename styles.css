@@ -381,16 +381,25 @@ body::before {
 }
 
 .checkline {
-  display: flex;
+  display: inline-grid;
+  grid-auto-flow: column;
   align-items: center;
   justify-self: start;
   white-space: nowrap;
-  gap: 0;
+  column-gap: 2px;
   font-size: 13px;
 }
 
+.checkline input[type="checkbox"] {
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
 .checkline span {
-  margin-left: 3px;
+  margin: 0;
+  line-height: 1.1;
 }
 
 .hole-depth-label {
@@ -538,15 +547,12 @@ body::before {
   }
 
   .checkline {
-    gap: 0;
+    column-gap: 1px;
   }
 
-  .checkline input {
-    margin: 0;
-  }
-
-  .checkline span {
-    margin-left: 1px;
+  .checkline input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
   }
 
   .hole-depth-label {
