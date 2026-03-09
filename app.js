@@ -570,8 +570,8 @@
 
     const chartLabels = ["Unloaded Collar", "Top", "Bottom"];
     const chartColors = ["#38bdf8", "#ef4444", "#22c55e"];
-    const asLoadedTop = asLoadedValues[0] + asLoadedValues[1];
-    const asLoadedBottom = asLoadedValues[3] + asLoadedValues[2];
+    const asLoadedTop = asLoadedValues[3] + asLoadedValues[2];
+    const asLoadedBottom = asLoadedValues[0] + asLoadedValues[1];
     const finalTop = finalValues[3] + finalValues[2];
     const finalBottom = finalValues[0] + finalValues[1];
     const asLoadedChartValues = [asLoadedValues[4], asLoadedTop, asLoadedBottom];
