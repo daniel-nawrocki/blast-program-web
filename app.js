@@ -3,6 +3,9 @@
   const routeButtons = Array.from(document.querySelectorAll("[data-route]"));
 
   function navigateTo(screenName) {
+    if (screenName === "references") {
+      screenName = "start";
+    }
     screens.forEach((screen) => {
       screen.hidden = screen.dataset.screen !== screenName;
     });
