@@ -533,6 +533,14 @@ body::before {
     font-size: 13px;
   }
 
+  .checkline {
+    gap: 1px;
+  }
+
+  .checkline input {
+    margin: 0;
+  }
+
   .hole-depth-label {
     justify-self: start;
     margin-right: 0;
