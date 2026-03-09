@@ -55,9 +55,12 @@
   const gasBottomDensityInput = document.getElementById("gas-bottom-density");
   const gasTopDensityInput = document.getElementById("gas-top-density");
 
-  const gasAvgDensityOut = document.getElementById("gas-avg-density");
-  const gasBottomDensityOut = document.getElementById("gas-bottom-density-out");
-  const gasPoundsOut = document.getElementById("gas-pounds");
+  const gasAvgDensityBottomOut = document.getElementById("gas-avg-density-bottom");
+  const gasAvgDensityTopOut = document.getElementById("gas-avg-density-top");
+  const gasBottomDensityBottomOut = document.getElementById("gas-bottom-density-bottom");
+  const gasBottomDensityTopOut = document.getElementById("gas-bottom-density-top");
+  const gasPoundsBottomOut = document.getElementById("gas-pounds-bottom");
+  const gasPoundsTopOut = document.getElementById("gas-pounds-top");
   const gasResult = document.getElementById("gas-result");
   const gasStatus = document.getElementById("gas-status");
   const gasAsLoadedChart = document.getElementById("gas-as-loaded-chart");
@@ -178,7 +181,7 @@
     const burden = patternType === "Square" ? base : rectangularK(rockType) * base;
     const spacing = burden > 0 ? patternFootage / burden : 0;
     const subdrill = 0.3 * burden;
-    const stemming = 0.7 * burden;
+    const stemming = empirical.band === "E" ? 0.7 * faceHeight : 0.7 * burden;
 
     empiricalWarning.textContent = empirical.belowRange
       ? "Ratio below empirical table range; Band E used as fallback."
@@ -529,12 +532,18 @@
       getCell(ref);
     });
 
-    const avgDensity = ["C", "D", "E", "F"].map((col) => asFloat(values[`${col}16`]).toFixed(2));
-    const bottomDensity = ["C", "D", "E", "F"].map((col) => asFloat(values[`${col}17`]).toFixed(2));
-    const pounds = ["C", "D", "E", "F"].map((col) => String(Math.round(asFloat(values[`${col}19`]))));
-    gasAvgDensityOut.textContent = avgDensity.join(" / ");
-    gasBottomDensityOut.textContent = bottomDensity.join(" / ");
-    gasPoundsOut.textContent = pounds.join(" / ");
+    const avgDensityBottom = asFloat(values.C16).toFixed(2);
+    const avgDensityTop = asFloat(values.F16).toFixed(2);
+    const bottomDensityBottom = asFloat(values.C17).toFixed(2);
+    const bottomDensityTop = asFloat(values.F17).toFixed(2);
+    const poundsBottom = String(Math.round(asFloat(values.C19)));
+    const poundsTop = String(Math.round(asFloat(values.F19)));
+    gasAvgDensityBottomOut.textContent = avgDensityBottom;
+    gasAvgDensityTopOut.textContent = avgDensityTop;
+    gasBottomDensityBottomOut.textContent = bottomDensityBottom;
+    gasBottomDensityTopOut.textContent = bottomDensityTop;
+    gasPoundsBottomOut.textContent = poundsBottom;
+    gasPoundsTopOut.textContent = poundsTop;
 
     let asLoadedValues = ["U20", "U19", "U18", "U17", "U16"].map((ref) => asFloat(values[ref]));
     if (asLoadedValues.map((v) => Math.max(0, v)).reduce((a, b) => a + b, 0) <= 0) {
@@ -561,8 +570,12 @@
 
     const chartLabels = ["Unloaded Collar", "Top", "Bottom"];
     const chartColors = ["#38bdf8", "#ef4444", "#22c55e"];
-    const asLoadedChartValues = [asLoadedValues[4], asLoadedValues[0], asLoadedValues[3]];
-    const finalChartValues = [finalValues[4], finalValues[3], finalValues[0]];
+    const asLoadedTop = asLoadedValues[0] + asLoadedValues[1];
+    const asLoadedBottom = asLoadedValues[3] + asLoadedValues[2];
+    const finalTop = finalValues[3] + finalValues[2];
+    const finalBottom = finalValues[0] + finalValues[1];
+    const asLoadedChartValues = [asLoadedValues[4], asLoadedTop, asLoadedBottom];
+    const finalChartValues = [finalValues[4], finalTop, finalBottom];
     drawStackedChart(gasAsLoadedChart, asLoadedChartValues, chartColors, chartLabels);
     drawStackedChart(gasFinalChart, finalChartValues, chartColors, chartLabels);
 
