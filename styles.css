@@ -478,10 +478,68 @@ body::before {
 
 @media (max-width: 720px) {
   .app-shell {
-    width: 960px;
+    width: min(100%, 520px);
+    max-width: 100%;
+    padding: 14px 10px;
+    zoom: 1 !important;
+  }
+
+  .screen {
+    gap: 14px;
+  }
+
+  .page-title {
+    font-size: clamp(1.6rem, 7vw, 2.1rem);
+  }
+
+  .panel {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .card-grid,
+  .split-cols,
+  .hero-grid,
+  .chart-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .gassing-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .gassing-grid label {
+    font-size: 13px;
+  }
+
+  .hole-depth-label {
+    justify-self: start;
+    margin-right: 0;
+  }
+
+  .gassing-grid-spacer {
+    display: none;
+  }
+
+  .alt-diameter-input {
+    grid-column: auto;
+  }
+
+  .inline-row .btn {
+    width: 100%;
+  }
+
+  #gas-result {
+    font-size: 19px;
   }
 
   .gassing-matrix {
-    min-width: 430px;
+    min-width: 0;
+    grid-template-columns: minmax(120px, 1fr) 92px 92px minmax(30px, auto);
   }
 }
