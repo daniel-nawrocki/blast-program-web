@@ -3,37 +3,223 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blast Program | Splash</title>
-  <link rel="stylesheet" href="./splash.css">
+  <title>Blast Program (Web)</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <main class="splash-shell">
-    <section class="hero">
-      <p class="eyebrow">Blast Program</p>
-      <h1>Main Splash Screen</h1>
-      <p class="lead">
-        Start here, then move into each sub page. This structure deploys cleanly on GitHub Pages.
-      </p>
-      <div class="hero-actions">
-        <a class="btn primary" href="./app.html">Open Full Toolkit</a>
-        <a class="btn ghost" href="./pages/tools.html">Tools Overview</a>
+  <main class="app-shell">
+    <section class="screen" data-screen="start">
+      <header class="page-header">
+        <h1 class="page-title">Blast Program</h1>
+      </header>
+
+      <div class="card-grid">
+        <button class="btn card" data-route="vibration-tool">Vibration Tool</button>
+        <button class="btn card" data-route="empirical-formula">Empirical Formula</button>
+        <button class="btn card" data-route="references">References/Cheat Sheets</button>
+        <button class="btn card" data-route="gassing-calculator">Gassing Calculator</button>
       </div>
     </section>
 
-    <section class="cards">
-      <a class="card" href="./app.html">
-        <h2>Toolkit App</h2>
-        <p>Use vibration, empirical, references, and gassing tools in one screen.</p>
-      </a>
-      <a class="card" href="./pages/tools.html">
-        <h2>Sub Page: Tools</h2>
-        <p>A standalone page describing the tool modules and where to find them.</p>
-      </a>
-      <a class="card" href="./pages/about.html">
-        <h2>Sub Page: About</h2>
-        <p>Simple project context page with links back to home and tools.</p>
-      </a>
+    <section class="screen" data-screen="vibration-tool" hidden>
+      <header class="page-header">
+        <h1 class="page-title">Vibration Tool</h1>
+      </header>
+
+      <div class="card-grid two-col">
+        <button class="btn card" data-route="vibration-calculator">Vibration Calculator</button>
+        <button class="btn card" data-route="site-factor-calibrator">Site Factor Calibrator</button>
+      </div>
+
+      <div class="footer-row">
+        <button class="btn secondary" data-route="start">Back to Start Screen</button>
+      </div>
     </section>
+
+    <section class="screen" data-screen="vibration-calculator" hidden>
+      <header class="page-header">
+        <h1 class="page-title">Vibration Calculator</h1>
+      </header>
+
+      <div class="panel">
+        <div class="form-grid">
+          <label for="ppd">Pounds per Delay</label>
+          <input id="ppd" type="number" min="0" step="0.01" value="0">
+
+          <label for="distance">Distance to Seismograph</label>
+          <input id="distance" type="number" min="0" step="0.01" value="0">
+
+          <label for="dyno-h">Dyno Site/Confinement Factor (H)</label>
+          <input id="dyno-h" type="number" min="1" step="0.1" value="160">
+        </div>
+
+        <p class="body-text">Use H=160 as default, then adjust H using your site confinement or regression-calibrated factor.</p>
+
+        <button id="calculate-ppv" class="btn primary">Calculate PPV</button>
+
+        <pre id="ppv-result" class="result">PPV result will appear here.</pre>
+      </div>
+
+      <div class="footer-row">
+        <button class="btn secondary" data-route="vibration-tool">Back to Vibration Tool</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="site-factor-calibrator" hidden>
+      <header class="page-header">
+        <h1 class="page-title">Site Factor Calibrator</h1>
+      </header>
+
+      <div class="panel">
+        <div class="form-grid">
+          <label for="site-current-factor">Current Factor</label>
+          <input id="site-current-factor" type="number" min="0.01" step="0.01" value="160">
+
+          <label for="site-actual-ppv">Actual PPV</label>
+          <input id="site-actual-ppv" type="number" min="0" step="0.001" value="0">
+
+          <label for="site-expected-ppv">Expected PPV</label>
+          <input id="site-expected-ppv" type="number" min="0" step="0.001" value="0">
+        </div>
+
+        <button id="calculate-site-factor" class="btn primary">Calculate Adjusted Factor</button>
+        <p id="site-factor-result" class="body-text">Adjusted factor result will appear here.</p>
+      </div>
+
+      <div class="footer-row"><button class="btn secondary" data-route="vibration-tool">Back to Vibration Tool</button></div>
+    </section>
+
+    <section class="screen" data-screen="empirical-formula" hidden>
+      <header class="page-header"><h1 class="page-title">Empirical Formula Calculation</h1></header>
+      <div class="panel split-cols">
+        <div>
+          <h2 class="section-title">Inputs</h2>
+          <div class="form-grid">
+            <label for="emp-rock-type">Rock Type</label>
+            <select id="emp-rock-type">
+              <option>Granite/Hard Limestone</option>
+              <option>Soft Limestone/Shale/Sandstone</option>
+            </select>
+
+            <label for="emp-face-height">Face Height (ft)</label>
+            <input id="emp-face-height" type="number" min="0" step="0.01" value="30">
+
+            <label for="emp-dh">Hole Diameter Dh (in)</label>
+            <input id="emp-dh" type="number" min="0" step="0.01" value="6.5">
+
+            <label for="emp-pattern-type">Pattern Type</label>
+            <select id="emp-pattern-type">
+              <option>Square</option>
+              <option>Rectangular</option>
+            </select>
+          </div>
+          <button id="calculate-empirical" class="btn primary">Calculate Empirical Outputs</button>
+          <p id="emp-warning" class="body-text"></p>
+        </div>
+        <div>
+          <h2 class="section-title">Results</h2>
+          <div class="hero-grid">
+            <div>
+              <p class="metric-label">Burden B (ft)</p>
+              <p id="emp-burden" class="metric-value">--</p>
+            </div>
+            <div>
+              <p class="metric-label">Spacing S (ft)</p>
+              <p id="emp-spacing" class="metric-value">--</p>
+            </div>
+          </div>
+          <div class="kv-grid">
+            <p class="metric-label">R = Height / Dh</p><p id="emp-ratio">--</p>
+            <p class="metric-label">Band</p><p id="emp-band">--</p>
+            <p class="metric-label">Empirical Constant</p><p id="emp-constant">--</p>
+            <p class="metric-label">Pattern Footage (PF)</p><p id="emp-pf">--</p>
+            <p class="metric-label">Subdrill J (0.30B)</p><p id="emp-subdrill">--</p>
+            <p class="metric-label">Stemming (Top and Bottom)</p><p id="emp-stemming">--</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-row"><button class="btn secondary" data-route="start">Back to Start Screen</button></div>
+    </section>
+
+    <section class="screen" data-screen="references" hidden>
+      <header class="page-header"><h1 class="page-title">References/Cheat Sheets</h1></header>
+      <div class="panel">
+        <a class="btn primary link-btn" href="./assets/references/Empirical Cheat Sheet.docx" target="_blank" rel="noopener">Empirical Cheat Sheet</a>
+        <a class="btn primary link-btn" href="./assets/references/Open Pit Book.pdf" target="_blank" rel="noopener">Open Pit Book</a>
+        <p id="references-status" class="body-text">Select a document to open.</p>
+      </div>
+      <div class="footer-row"><button class="btn secondary" data-route="start">Back to Start Screen</button></div>
+    </section>
+
+    <section class="screen" data-screen="gassing-calculator" hidden>
+      <header class="page-header"><h1 class="page-title">Gassing Calculator</h1></header>
+      <div class="panel">
+        <div class="gassing-grid">
+          <label for="gas-hole-diameter">Hole Diameter</label>
+          <input id="gas-hole-diameter" type="number" min="0" step="0.01" value="4.5">
+          <label for="gas-units">Units</label>
+          <select id="gas-units"><option value="2">Imperial</option><option value="1">Metric</option></select>
+          <label class="checkline"><input id="gas-wet-hole" type="checkbox"> Wet Hole</label>
+
+          <label for="gas-hole-depth">Hole Depth</label>
+          <input id="gas-hole-depth" type="number" min="0" step="0.01" value="38">
+          <label class="checkline"><input id="gas-alt-needed" type="checkbox"> Alt Diameter</label>
+          <label for="gas-alt-diameter">Alt Diameter Value</label>
+          <input id="gas-alt-diameter" type="number" min="0" step="0.01" value="5.75">
+
+          <label for="gas-bottom-column">Explosive Column Bottom</label>
+          <input id="gas-bottom-column" type="number" min="0" step="1" value="29">
+          <label for="gas-mid-bot-column">Mid-Bot</label>
+          <input id="gas-mid-bot-column" type="number" min="0" step="1" value="0">
+          <label for="gas-mid-top-column">Mid-Top</label>
+          <input id="gas-mid-top-column" type="number" min="0" step="1" value="0">
+          <label for="gas-top-column">Top</label>
+          <input id="gas-top-column" type="number" min="0" step="1" value="0">
+
+          <label for="gas-bottom-density">Cup Density Bottom</label>
+          <input id="gas-bottom-density" type="number" min="0" step="0.01" value="1.1">
+          <label for="gas-mid-bot-density">Mid-Bot</label>
+          <input id="gas-mid-bot-density" type="number" min="0" step="0.01" value="0">
+          <label for="gas-mid-top-density">Mid-Top</label>
+          <input id="gas-mid-top-density" type="number" min="0" step="0.01" value="0">
+          <label for="gas-top-density">Top</label>
+          <input id="gas-top-density" type="number" min="0" step="0.01" value="0">
+        </div>
+
+        <div class="kv-grid compact">
+          <p class="metric-label">Ave Density C/D/E/F</p><p id="gas-avg-density">0.00 / 0.00 / 0.00 / 0.00</p>
+          <p class="metric-label">Bottom Density C/D/E/F</p><p id="gas-bottom-density-out">0.00 / 0.00 / 0.00 / 0.00</p>
+          <p class="metric-label">Pounds to load C/D/E/F</p><p id="gas-pounds">0 / 0 / 0 / 0</p>
+        </div>
+
+        <div class="inline-row">
+          <button id="gas-reload-template" class="btn secondary" type="button">Reload Workbook Template</button>
+          <button id="gas-calculate" class="btn primary" type="button">Run Gassing Calculation</button>
+        </div>
+
+        <p id="gas-result" class="body-text"></p>
+        <p id="gas-status" class="body-text"></p>
+
+        <div class="chart-wrap">
+          <div>
+            <p class="section-title">As Loaded</p>
+            <div id="gas-as-loaded-chart" class="stacked-chart"></div>
+          </div>
+          <div>
+            <p class="section-title">Final</p>
+            <div id="gas-final-chart" class="stacked-chart"></div>
+          </div>
+          <div>
+            <p class="section-title">Rise</p>
+            <p id="gas-rise" class="metric-value">0.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-row"><button class="btn secondary" data-route="start">Back to Start Screen</button></div>
+    </section>
+
   </main>
+
+  <script src="./app.js"></script>
 </body>
 </html>
