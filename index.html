@@ -166,30 +166,31 @@
           <label class="checkline"><input id="gas-alt-needed" type="checkbox"> Alt Diameter</label>
           <label for="gas-alt-diameter">Alt Diameter Value</label>
           <input id="gas-alt-diameter" type="number" min="0" step="0.01" value="5.75">
+        </div>
 
-          <label for="gas-bottom-column">Explosive Column Bottom</label>
-          <input id="gas-bottom-column" type="number" min="0" step="1" value="29">
-          <label for="gas-mid-bot-column">Mid-Bot</label>
-          <input id="gas-mid-bot-column" type="number" min="0" step="1" value="0">
-          <label for="gas-mid-top-column">Mid-Top</label>
-          <input id="gas-mid-top-column" type="number" min="0" step="1" value="0">
-          <label for="gas-top-column">Top</label>
-          <input id="gas-top-column" type="number" min="0" step="1" value="0">
+        <div class="gassing-matrix-wrap">
+          <div class="gassing-matrix">
+            <div class="blank-cell"></div>
+            <div class="col-head">Bottom</div>
+            <div class="col-head">Top</div>
+            <div class="blank-cell"></div>
 
-          <label for="gas-bottom-density">Cup Density Bottom</label>
-          <input id="gas-bottom-density" type="number" min="0" step="0.01" value="1.1">
-          <label for="gas-mid-bot-density">Mid-Bot</label>
-          <input id="gas-mid-bot-density" type="number" min="0" step="0.01" value="0">
-          <label for="gas-mid-top-density">Mid-Top</label>
-          <input id="gas-mid-top-density" type="number" min="0" step="0.01" value="0">
-          <label for="gas-top-density">Top</label>
-          <input id="gas-top-density" type="number" min="0" step="0.01" value="0">
+            <label class="row-head" for="gas-bottom-column">Explosive Column</label>
+            <input id="gas-bottom-column" type="number" min="0" step="1" value="29">
+            <input id="gas-top-column" type="number" min="0" step="1" value="0">
+            <p class="unit-head">ft</p>
+
+            <label class="row-head" for="gas-bottom-density">Cup Density</label>
+            <input id="gas-bottom-density" type="number" min="0" step="0.01" value="1.1">
+            <input id="gas-top-density" type="number" min="0" step="0.01" value="0">
+            <p class="unit-head">g/cm3</p>
+          </div>
         </div>
 
         <div class="kv-grid compact">
-          <p class="metric-label">Ave Density C/D/E/F</p><p id="gas-avg-density">0.00 / 0.00 / 0.00 / 0.00</p>
-          <p class="metric-label">Bottom Density C/D/E/F</p><p id="gas-bottom-density-out">0.00 / 0.00 / 0.00 / 0.00</p>
-          <p class="metric-label">Pounds to load C/D/E/F</p><p id="gas-pounds">0 / 0 / 0 / 0</p>
+          <p class="metric-label">Ave Density</p><p id="gas-avg-density">0.00 / 0.00 / 0.00 / 0.00</p>
+          <p class="metric-label">Bottom Density</p><p id="gas-bottom-density-out">0.00 / 0.00 / 0.00 / 0.00</p>
+          <p class="metric-label">Pounds to load</p><p id="gas-pounds">0 / 0 / 0 / 0</p>
         </div>
 
         <div class="inline-row">

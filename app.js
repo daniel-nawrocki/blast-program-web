@@ -51,12 +51,8 @@
   const gasHoleDepthInput = document.getElementById("gas-hole-depth");
   const gasAltDiameterInput = document.getElementById("gas-alt-diameter");
   const gasBottomColumnInput = document.getElementById("gas-bottom-column");
-  const gasMidBotColumnInput = document.getElementById("gas-mid-bot-column");
-  const gasMidTopColumnInput = document.getElementById("gas-mid-top-column");
   const gasTopColumnInput = document.getElementById("gas-top-column");
   const gasBottomDensityInput = document.getElementById("gas-bottom-density");
-  const gasMidBotDensityInput = document.getElementById("gas-mid-bot-density");
-  const gasMidTopDensityInput = document.getElementById("gas-mid-top-density");
   const gasTopDensityInput = document.getElementById("gas-top-density");
 
   const gasAvgDensityOut = document.getElementById("gas-avg-density");
@@ -74,6 +70,7 @@
   let gassingFormulaMap = {};
 
   function parseValue(el) {
+    if (!el) return 0;
     const value = Number.parseFloat(el.value);
     return Number.isFinite(value) ? value : 0;
   }
@@ -462,12 +459,12 @@
     values.C9 = parseValue(gasHoleDepthInput);
     values.E8 = parseValue(gasAltDiameterInput);
     values.C13 = parseValue(gasBottomColumnInput);
-    values.D13 = parseValue(gasMidBotColumnInput);
-    values.E13 = parseValue(gasMidTopColumnInput);
+    values.D13 = 0;
+    values.E13 = 0;
     values.F13 = parseValue(gasTopColumnInput);
     values.C14 = parseValue(gasBottomDensityInput);
-    values.D14 = parseValue(gasMidBotDensityInput);
-    values.E14 = parseValue(gasMidTopDensityInput);
+    values.D14 = 0;
+    values.E14 = 0;
     values.F14 = parseValue(gasTopDensityInput);
     return values;
   }
@@ -595,12 +592,8 @@
     gasHoleDepthInput.value = asFloat(gassingTemplateValues.C9 || 38);
     gasAltDiameterInput.value = asFloat(gassingTemplateValues.E8 || 5.75);
     gasBottomColumnInput.value = asFloat(gassingTemplateValues.C13 || 29);
-    gasMidBotColumnInput.value = asFloat(gassingTemplateValues.D13 || 0);
-    gasMidTopColumnInput.value = asFloat(gassingTemplateValues.E13 || 0);
     gasTopColumnInput.value = asFloat(gassingTemplateValues.F13 || 0);
     gasBottomDensityInput.value = asFloat(gassingTemplateValues.C14 || 1.1);
-    gasMidBotDensityInput.value = asFloat(gassingTemplateValues.D14 || 0);
-    gasMidTopDensityInput.value = asFloat(gassingTemplateValues.E14 || 0);
     gasTopDensityInput.value = asFloat(gassingTemplateValues.F14 || 0);
 
     gasUnitsInput.value = Number.parseInt(gassingTemplateValues.T3, 10) === 1 ? "1" : "2";

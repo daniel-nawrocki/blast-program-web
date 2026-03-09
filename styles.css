@@ -222,6 +222,56 @@ body {
   background: #fff;
 }
 
+.gassing-matrix-wrap {
+  overflow-x: auto;
+}
+
+.gassing-matrix {
+  display: grid;
+  grid-template-columns: minmax(140px, auto) minmax(84px, 110px) minmax(84px, 110px) minmax(52px, auto);
+  align-items: center;
+  gap: 0;
+}
+
+.blank-cell {
+  min-height: 1px;
+}
+
+.col-head,
+.row-head,
+.unit-head {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.col-head {
+  text-align: center;
+  font-weight: 600;
+}
+
+.row-head {
+  padding-right: 8px;
+}
+
+.unit-head {
+  padding-left: 6px;
+}
+
+.gassing-matrix input {
+  width: 100%;
+  border: 2px solid #2d3748;
+  border-radius: 0;
+  padding: 4px 8px;
+  font: inherit;
+  text-align: center;
+  background: #fff;
+}
+
+.gassing-matrix input + input {
+  border-left-width: 1px;
+}
+
 .checkline {
   display: flex;
   align-items: center;
@@ -274,8 +324,15 @@ body {
   .split-cols,
   .hero-grid,
   .kv-grid,
-  .gassing-grid,
   .chart-wrap {
     grid-template-columns: 1fr;
+  }
+
+  .gassing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gassing-matrix {
+    min-width: 430px;
   }
 }
