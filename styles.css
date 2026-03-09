@@ -402,14 +402,14 @@ body::before {
 
 .stack-segment--unloaded-collar {
   color: #1f2937;
-  background-color: #b9a17f;
+  background-color: #a8b0b7;
   background-image:
-    radial-gradient(circle at 18% 26%, #d6c1a0 0 3px, transparent 3px),
-    radial-gradient(circle at 42% 64%, #9e8666 0 4px, transparent 4px),
-    radial-gradient(circle at 72% 34%, #cab28e 0 3px, transparent 3px),
-    radial-gradient(circle at 84% 72%, #8e7658 0 3px, transparent 3px),
-    radial-gradient(circle at 56% 20%, #b79d7a 0 3px, transparent 3px),
-    linear-gradient(180deg, #ccb18a 0%, #a88f6f 100%);
+    radial-gradient(circle at 18% 26%, #d8dde2 0 3px, transparent 3px),
+    radial-gradient(circle at 42% 64%, #8c949c 0 4px, transparent 4px),
+    radial-gradient(circle at 72% 34%, #c3c9cf 0 3px, transparent 3px),
+    radial-gradient(circle at 84% 72%, #727a82 0 3px, transparent 3px),
+    radial-gradient(circle at 56% 20%, #a7afb7 0 3px, transparent 3px),
+    linear-gradient(180deg, #c4cbd2 0%, #929aa2 100%);
   background-size: 28px 20px, 34px 24px, 30px 22px, 32px 24px, 26px 18px, 100% 100%;
 }
 
