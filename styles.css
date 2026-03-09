@@ -272,6 +272,21 @@ body {
   border-left-width: 1px;
 }
 
+.gassing-summary-grid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: minmax(140px, auto) minmax(84px, 110px) minmax(84px, 110px) minmax(52px, auto);
+  align-items: center;
+  row-gap: 6px;
+}
+
+.summary-value {
+  margin: 0;
+  grid-column: 2 / 4;
+  font-size: 31px;
+  line-height: 1.25;
+}
+
 .checkline {
   display: flex;
   align-items: center;
@@ -333,6 +348,10 @@ body {
   }
 
   .gassing-matrix {
+    min-width: 430px;
+  }
+
+  .gassing-summary-grid {
     min-width: 430px;
   }
 }

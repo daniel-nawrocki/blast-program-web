@@ -559,11 +559,12 @@
       asFloat(values.S16),
     ];
 
-    const colors = ["#ef4444", "#f97316", "#facc15", "#22c55e", "#38bdf8"];
-    const asLoadedLabels = ["Top", "Mid-Top", "Mid-Bot", "Bottom", "Unloaded Collar"];
-    const finalLabels = ["Bottom", "Mid-Bot", "Mid-Top", "Top", "Unloaded Collar"];
-    drawStackedChart(gasAsLoadedChart, asLoadedValues, colors, asLoadedLabels);
-    drawStackedChart(gasFinalChart, finalValues, colors, finalLabels);
+    const chartLabels = ["Unloaded Collar", "Top", "Bottom"];
+    const chartColors = ["#38bdf8", "#ef4444", "#22c55e"];
+    const asLoadedChartValues = [asLoadedValues[4], asLoadedValues[0], asLoadedValues[3]];
+    const finalChartValues = [finalValues[4], finalValues[3], finalValues[0]];
+    drawStackedChart(gasAsLoadedChart, asLoadedChartValues, chartColors, chartLabels);
+    drawStackedChart(gasFinalChart, finalChartValues, chartColors, chartLabels);
 
     const rise = asLoadedValues[4] - finalValues[4];
     gasRise.textContent = rise.toFixed(2);

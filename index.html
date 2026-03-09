@@ -185,12 +185,20 @@
             <input id="gas-top-density" type="number" min="0" step="0.01" value="0">
             <p class="unit-head">g/cm3</p>
           </div>
-        </div>
 
-        <div class="kv-grid compact">
-          <p class="metric-label">Ave Density</p><p id="gas-avg-density">0.00 / 0.00 / 0.00 / 0.00</p>
-          <p class="metric-label">Bottom Density</p><p id="gas-bottom-density-out">0.00 / 0.00 / 0.00 / 0.00</p>
-          <p class="metric-label">Pounds to load</p><p id="gas-pounds">0 / 0 / 0 / 0</p>
+          <div class="gassing-summary-grid">
+            <p class="row-head">Ave Density</p>
+            <p id="gas-avg-density" class="summary-value">0.00 / 0.00 / 0.00 / 0.00</p>
+            <div class="blank-cell"></div>
+
+            <p class="row-head">Bottom Density</p>
+            <p id="gas-bottom-density-out" class="summary-value">0.00 / 0.00 / 0.00 / 0.00</p>
+            <div class="blank-cell"></div>
+
+            <p class="row-head">Pounds to load</p>
+            <p id="gas-pounds" class="summary-value">0 / 0 / 0 / 0</p>
+            <div class="blank-cell"></div>
+          </div>
         </div>
 
         <div class="inline-row">
