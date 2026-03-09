@@ -44,7 +44,6 @@
   const referencesStatus = document.getElementById("references-status");
   const referenceLinks = Array.from(document.querySelectorAll('[data-screen="references"] a'));
 
-  const gasUnitsInput = document.getElementById("gas-units");
   const gasWetHoleInput = document.getElementById("gas-wet-hole");
   const gasAltNeededInput = document.getElementById("gas-alt-needed");
   const gasHoleDiameterInput = document.getElementById("gas-hole-diameter");
@@ -458,7 +457,7 @@
 
   function buildRuntimeValues() {
     const values = { ...gassingTemplateValues };
-    values.T3 = Number.parseInt(gasUnitsInput.value, 10);
+    values.T3 = 2;
     values.O10 = gasWetHoleInput.checked;
     values.Q10 = gasAltNeededInput.checked;
     values.P3 = parseValue(gasHoleDiameterInput);
@@ -605,7 +604,9 @@
   }
 
   function applyGassingTemplateDefaults() {
-    gasHoleDiameterInput.value = asFloat(gassingTemplateValues.P3 || 4.5);
+    const holeDiameter = asFloat(gassingTemplateValues.P3 || 4.5);
+    const clampedQuarterInch = Math.min(8, Math.max(3.5, Math.round(holeDiameter * 4) / 4));
+    gasHoleDiameterInput.value = clampedQuarterInch.toFixed(2);
     gasHoleDepthInput.value = asFloat(gassingTemplateValues.C9 || 38);
     gasAltDiameterInput.value = asFloat(gassingTemplateValues.E8 || 5.75);
     gasBottomColumnInput.value = asFloat(gassingTemplateValues.C13 || 29);
@@ -613,7 +614,6 @@
     gasBottomDensityInput.value = asFloat(gassingTemplateValues.C14 || 1.1);
     gasTopDensityInput.value = asFloat(gassingTemplateValues.F14 || 0);
 
-    gasUnitsInput.value = Number.parseInt(gassingTemplateValues.T3, 10) === 1 ? "1" : "2";
     gasWetHoleInput.checked = asBool(gassingTemplateValues.O10);
     gasAltNeededInput.checked = asBool(gassingTemplateValues.Q10);
     gasAltDiameterInput.disabled = !gasAltNeededInput.checked;

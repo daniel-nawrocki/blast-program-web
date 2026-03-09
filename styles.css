@@ -279,6 +279,10 @@ body::before {
   background: rgba(250, 253, 255, 0.94);
 }
 
+.gassing-grid-spacer {
+  min-height: 1px;
+}
+
 .gassing-matrix-wrap {
   overflow-x: auto;
 }

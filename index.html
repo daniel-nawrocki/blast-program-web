@@ -168,11 +168,30 @@
       <header class="page-header"><h1 class="page-title">Gassing Calculator</h1></header>
       <div class="panel">
         <div class="gassing-grid">
-          <label for="gas-hole-diameter">Hole Diameter</label>
-          <input id="gas-hole-diameter" type="number" min="0" step="0.01" value="4.5">
-          <label for="gas-units">Units</label>
-          <select id="gas-units"><option value="2">Imperial</option><option value="1">Metric</option></select>
+          <label for="gas-hole-diameter">Hole Diameter (in)</label>
+          <select id="gas-hole-diameter">
+            <option value="3.50">3 1/2</option>
+            <option value="3.75">3 3/4</option>
+            <option value="4.00">4</option>
+            <option value="4.25">4 1/4</option>
+            <option value="4.50" selected>4 1/2</option>
+            <option value="4.75">4 3/4</option>
+            <option value="5.00">5</option>
+            <option value="5.25">5 1/4</option>
+            <option value="5.50">5 1/2</option>
+            <option value="5.75">5 3/4</option>
+            <option value="6.00">6</option>
+            <option value="6.25">6 1/4</option>
+            <option value="6.50">6 1/2</option>
+            <option value="6.75">6 3/4</option>
+            <option value="7.00">7</option>
+            <option value="7.25">7 1/4</option>
+            <option value="7.50">7 1/2</option>
+            <option value="7.75">7 3/4</option>
+            <option value="8.00">8</option>
+          </select>
           <label class="checkline"><input id="gas-wet-hole" type="checkbox"> Wet Hole</label>
+          <div class="gassing-grid-spacer" aria-hidden="true"></div>
 
           <label for="gas-hole-depth" class="hole-depth-label">Hole Depth</label>
           <input id="gas-hole-depth" type="number" min="0" step="0.01" value="38">
