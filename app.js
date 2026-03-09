@@ -599,7 +599,7 @@
       totalPounds = ["C", "D", "E", "F"].reduce((sum, col) => sum + asFloat(values[`${col}19`]), 0);
     }
 
-    gasResult.textContent = `Hole Average Density: ${holeAvgDensity.toFixed(2)}\nTotal Pounds for Hole: ${totalPounds.toFixed(2)}`;
+    gasResult.textContent = `Hole Average Density: ${holeAvgDensity.toFixed(2)} g/cm3\nTotal Pounds for Hole: ${totalPounds.toFixed(2)} lbs`;
     gasStatus.textContent = "";
   }
 
