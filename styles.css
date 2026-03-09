@@ -560,6 +560,10 @@ body::before {
     margin-right: 0;
   }
 
+  .hole-depth-input {
+    grid-column: 1;
+  }
+
   .alt-needed-line,
   .alt-diameter-label,
   .alt-diameter-input {
