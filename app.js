@@ -443,9 +443,13 @@
     for (let i = positive.length - 1; i >= 0; i -= 1) {
       const val = positive[i];
       if (val <= 0) continue;
+      const key = labels[i].toLowerCase().replace(/\s+/g, "-");
       const seg = document.createElement("div");
       seg.className = "stack-segment";
-      seg.style.backgroundColor = colors[i];
+      seg.classList.add(`stack-segment--${key}`);
+      if (key !== "unloaded-collar") {
+        seg.style.backgroundColor = colors[i];
+      }
       seg.style.minHeight = `${Math.max(20, Math.round((val / total) * targetHeight))}px`;
       seg.title = `${labels[i]}: ${val.toFixed(4)}`;
       seg.textContent = `${labels[i]} ${val.toFixed(2)}`;
@@ -569,7 +573,7 @@
     ];
 
     const chartLabels = ["Unloaded Collar", "Top", "Bottom"];
-    const chartColors = ["#38bdf8", "#ef4444", "#22c55e"];
+    const chartColors = ["#8f7a5d", "#f472b6", "#dc2626"];
     const asLoadedTop = asLoadedValues[3] + asLoadedValues[2];
     const asLoadedBottom = asLoadedValues[0] + asLoadedValues[1];
     const finalTop = finalValues[3] + finalValues[2];

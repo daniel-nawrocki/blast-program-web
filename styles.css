@@ -351,7 +351,9 @@ body::before {
 .checkline {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-self: start;
+  white-space: nowrap;
+  gap: 3px;
   font-size: 13px;
 }
 
@@ -388,6 +390,27 @@ body::before {
   justify-content: center;
   text-align: center;
   padding: 2px;
+}
+
+.stack-segment--bottom {
+  background-color: #dc2626;
+}
+
+.stack-segment--top {
+  background-color: #f472b6;
+}
+
+.stack-segment--unloaded-collar {
+  color: #1f2937;
+  background-color: #b9a17f;
+  background-image:
+    radial-gradient(circle at 18% 26%, #d6c1a0 0 3px, transparent 3px),
+    radial-gradient(circle at 42% 64%, #9e8666 0 4px, transparent 4px),
+    radial-gradient(circle at 72% 34%, #cab28e 0 3px, transparent 3px),
+    radial-gradient(circle at 84% 72%, #8e7658 0 3px, transparent 3px),
+    radial-gradient(circle at 56% 20%, #b79d7a 0 3px, transparent 3px),
+    linear-gradient(180deg, #ccb18a 0%, #a88f6f 100%);
+  background-size: 28px 20px, 34px 24px, 30px 22px, 32px 24px, 26px 18px, 100% 100%;
 }
 
 @media (max-width: 1200px) {
