@@ -385,8 +385,12 @@ body::before {
   align-items: center;
   justify-self: start;
   white-space: nowrap;
-  gap: 3px;
+  gap: 0;
   font-size: 13px;
+}
+
+.checkline span {
+  margin-left: 3px;
 }
 
 .hole-depth-label {
@@ -534,11 +538,15 @@ body::before {
   }
 
   .checkline {
-    gap: 1px;
+    gap: 0;
   }
 
   .checkline input {
     margin: 0;
+  }
+
+  .checkline span {
+    margin-left: 1px;
   }
 
   .hole-depth-label {
