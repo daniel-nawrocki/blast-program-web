@@ -66,7 +66,6 @@
   const gasAsLoadedChart = document.getElementById("gas-as-loaded-chart");
   const gasFinalChart = document.getElementById("gas-final-chart");
   const gasRise = document.getElementById("gas-rise");
-  const gasReloadTemplateButton = document.getElementById("gas-reload-template");
   const gasCalculateButton = document.getElementById("gas-calculate");
 
   let gassingTemplateValues = {};
@@ -573,7 +572,7 @@
     ];
 
     const chartLabels = ["Unloaded Collar", "Top", "Bottom"];
-    const chartColors = ["#8f7a5d", "#f472b6", "#dc2626"];
+    const chartColors = ["#8f7a5d", "#f472b6", "#f472b6"];
     const asLoadedTop = asLoadedValues[3] + asLoadedValues[2];
     const asLoadedBottom = asLoadedValues[0] + asLoadedValues[1];
     const finalTop = finalValues[3] + finalValues[2];
@@ -652,7 +651,6 @@
   gasAltNeededInput.addEventListener("change", () => {
     gasAltDiameterInput.disabled = !gasAltNeededInput.checked;
   });
-  gasReloadTemplateButton.addEventListener("click", loadGassingTemplate);
   gasCalculateButton.addEventListener("click", calculateGassing);
 
   loadGassingTemplate();

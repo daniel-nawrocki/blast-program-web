@@ -357,6 +357,11 @@ body::before {
   font-size: 13px;
 }
 
+.hole-depth-label {
+  justify-self: end;
+  margin-right: -4px;
+}
+
 .inline-row {
   display: flex;
   gap: 10px;
@@ -393,7 +398,7 @@ body::before {
 }
 
 .stack-segment--bottom {
-  background-color: #dc2626;
+  background-color: #f472b6;
 }
 
 .stack-segment--top {

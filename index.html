@@ -174,7 +174,7 @@
           <select id="gas-units"><option value="2">Imperial</option><option value="1">Metric</option></select>
           <label class="checkline"><input id="gas-wet-hole" type="checkbox"> Wet Hole</label>
 
-          <label for="gas-hole-depth">Hole Depth</label>
+          <label for="gas-hole-depth" class="hole-depth-label">Hole Depth</label>
           <input id="gas-hole-depth" type="number" min="0" step="0.01" value="38">
           <label class="checkline"><input id="gas-alt-needed" type="checkbox"> Alternate Diameter</label>
           <label for="gas-alt-diameter">Alternate Diameter Value</label>
@@ -216,7 +216,6 @@
         </div>
 
         <div class="inline-row">
-          <button id="gas-reload-template" class="btn secondary" type="button">Reload Workbook Template</button>
           <button id="gas-calculate" class="btn primary" type="button">Run Gassing Calculation</button>
         </div>
 
