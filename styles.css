@@ -202,6 +202,14 @@ body::before {
   font-size: 14px;
 }
 
+#gas-result {
+  white-space: pre-line;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 800;
+  color: #0f2342;
+}
+
 .result {
   margin: 0;
   white-space: pre-wrap;
@@ -281,6 +289,10 @@ body::before {
 
 .gassing-grid-spacer {
   min-height: 1px;
+}
+
+.alt-diameter-input {
+  grid-column: 4;
 }
 
 .gassing-matrix-wrap {
