@@ -295,8 +295,20 @@ body::before {
   min-height: 1px;
 }
 
+.alt-diameter-label {
+  grid-column: 3;
+  justify-self: start;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
 .alt-diameter-input {
-  grid-column: 4;
+  grid-column: 3;
+  justify-self: start;
+  width: 170px !important;
+  max-width: 100%;
+  padding: 5px 8px !important;
+  font-size: 13px;
 }
 
 .gassing-matrix-wrap {
@@ -530,8 +542,9 @@ body::before {
     display: none;
   }
 
+  .alt-diameter-label,
   .alt-diameter-input {
-    grid-column: auto;
+    grid-column: 2;
   }
 
   .inline-row .btn {
