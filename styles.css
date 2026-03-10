@@ -257,7 +257,7 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 132px;
+  width: 68px;
   font-size: 12px;
   font-weight: 700;
   color: #1b365c;
@@ -306,7 +306,7 @@ body::before {
 
 .triangle-output-walkout {
   left: 52%;
-  bottom: 14px;
+  bottom: 8px;
   transform: translateX(-50%);
 }
 
@@ -686,7 +686,7 @@ body::before {
   }
 
   .triangle-input {
-    width: 114px;
+    width: 58px;
   }
 
   .triangle-input-angle {
