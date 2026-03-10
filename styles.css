@@ -281,7 +281,7 @@ body::before {
 
 .triangle-input-depth {
   top: 50%;
-  left: 16px;
+  left: 20px;
   transform: translateY(-50%);
 }
 
@@ -299,15 +299,14 @@ body::before {
 }
 
 .triangle-output-length {
-  top: 34%;
-  left: 42%;
-  transform: rotate(24deg);
-  transform-origin: center;
+  top: 44%;
+  left: 60%;
+  transform: translate(-50%, -50%);
 }
 
 .triangle-output-walkout {
   left: 52%;
-  bottom: 20px;
+  bottom: 26px;
   transform: translateX(-50%);
 }
 
@@ -322,7 +321,7 @@ body::before {
 }
 
 .triangle-tag-depth {
-  left: 4%;
+  left: 8.5%;
   top: 52%;
   transform: rotate(-90deg) translateY(-50%);
   transform-origin: left top;
@@ -718,7 +717,7 @@ body::before {
   }
 
   .triangle-input-depth {
-    left: 8px;
+    left: 12px;
   }
 
   .triangle-output {
@@ -727,6 +726,7 @@ body::before {
   }
 
   .triangle-output-length {
-    left: 44%;
+    top: 42%;
+    left: 62%;
   }
 }

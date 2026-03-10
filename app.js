@@ -27,7 +27,6 @@
   const trigWalkoutOutput = document.getElementById("trig-walkout-output");
   const trigLengthOutput = document.getElementById("trig-length-output");
   const trigResult = document.getElementById("trig-result");
-  const calculateTrigButton = document.getElementById("calculate-trig");
 
   const siteCurrentFactorInput = document.getElementById("site-current-factor");
   const siteActualPpvInput = document.getElementById("site-actual-ppv");
@@ -698,7 +697,6 @@
   });
 
   calcButton.addEventListener("click", calculatePpv);
-  calculateTrigButton.addEventListener("click", () => calculateHoleTrig(true));
   trigHoleDepthInput.addEventListener("input", () => calculateHoleTrig(false));
   trigAngleInput.addEventListener("input", () => calculateHoleTrig(false));
   calculateSiteFactorButton.addEventListener("click", calculateAdjustedSiteFactor);
