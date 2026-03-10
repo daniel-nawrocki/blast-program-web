@@ -17,6 +17,9 @@
         <button class="btn card" data-route="vibration-tool">
           <span class="card-title">Vibration Estimate</span>
         </button>
+        <button class="btn card" data-route="hole-trig-solver">
+          <span class="card-title">Angle Hole Solver</span>
+        </button>
         <button class="btn card" data-route="empirical-formula">
           <span class="card-title">Empirical Formula</span>
         </button>
@@ -27,6 +30,29 @@
         <button class="btn card" data-route="gassing-calculator">
           <span class="card-title">Gassing Calculator</span>
         </button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="hole-trig-solver" hidden>
+      <header class="page-header">
+        <h1 class="page-title">Angle Hole Solver</h1>
+      </header>
+
+      <div class="panel">
+        <div class="form-grid">
+          <label for="trig-hole-depth">Hole Depth</label>
+          <input id="trig-hole-depth" type="number" min="0" step="0.01" value="30">
+
+          <label for="trig-angle">Angle from Vertical (degrees)</label>
+          <input id="trig-angle" type="number" min="0" max="89.99" step="0.01" value="20">
+        </div>
+
+        <button id="calculate-trig" class="btn primary">Calculate</button>
+        <pre id="trig-result" class="result">Walkout and hole length will appear here.</pre>
+      </div>
+
+      <div class="footer-row">
+        <button class="btn secondary" data-route="start">Back to Start Screen</button>
       </div>
     </section>
 

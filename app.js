@@ -22,6 +22,10 @@
   const dynoHInput = document.getElementById("dyno-h");
   const ppvResult = document.getElementById("ppv-result");
   const calcButton = document.getElementById("calculate-ppv");
+  const trigHoleDepthInput = document.getElementById("trig-hole-depth");
+  const trigAngleInput = document.getElementById("trig-angle");
+  const trigResult = document.getElementById("trig-result");
+  const calculateTrigButton = document.getElementById("calculate-trig");
 
   const siteCurrentFactorInput = document.getElementById("site-current-factor");
   const siteActualPpvInput = document.getElementById("site-actual-ppv");
@@ -118,6 +122,30 @@
     const quarryUpperBoundPpv = 138.0 * (sd ** -1.38);
 
     ppvResult.textContent = formatPpvResult(dynoPpv, sd);
+  }
+
+  function calculateHoleTrig() {
+    const holeDepth = parseValue(trigHoleDepthInput);
+    const angleDegrees = parseValue(trigAngleInput);
+
+    if (holeDepth <= 0) {
+      trigResult.textContent = "Enter Hole Depth greater than 0.";
+      return;
+    }
+
+    if (angleDegrees < 0 || angleDegrees >= 90) {
+      trigResult.textContent = "Angle must be between 0 and less than 90 degrees.";
+      return;
+    }
+
+    const angleRadians = angleDegrees * (Math.PI / 180);
+    const walkout = holeDepth * Math.tan(angleRadians);
+    const holeLength = holeDepth / Math.cos(angleRadians);
+
+    trigResult.textContent = [
+      `Walkout: ${walkout.toFixed(3)}`,
+      `Hole Length: ${holeLength.toFixed(3)}`,
+    ].join("\n");
   }
 
   function calculateAdjustedSiteFactor() {
@@ -650,6 +678,7 @@
   });
 
   calcButton.addEventListener("click", calculatePpv);
+  calculateTrigButton.addEventListener("click", calculateHoleTrig);
   calculateSiteFactorButton.addEventListener("click", calculateAdjustedSiteFactor);
   calculateEmpiricalButton.addEventListener("click", calculateEmpirical);
 
