@@ -132,8 +132,8 @@
       return;
     }
 
-    trigWalkoutOutput.textContent = `Walkout: ${walkout.toFixed(3)}`;
-    trigLengthOutput.textContent = `Hole Length: ${holeLength.toFixed(3)}`;
+    trigWalkoutOutput.textContent = `Walkout: ${walkout.toFixed(1)}`;
+    trigLengthOutput.textContent = `Hole Length: ${holeLength.toFixed(1)}`;
   }
 
   function calculateHoleTrig(showValidation = true) {
@@ -162,8 +162,8 @@
     setTriangleOutputs(walkout, holeLength);
 
     trigResult.textContent = [
-      `Walkout: ${walkout.toFixed(3)}`,
-      `Hole Length: ${holeLength.toFixed(3)}`,
+      `Walkout: ${walkout.toFixed(1)}`,
+      `Hole Length: ${holeLength.toFixed(1)}`,
     ].join("\n");
   }
 
