@@ -24,6 +24,8 @@
   const calcButton = document.getElementById("calculate-ppv");
   const trigHoleDepthInput = document.getElementById("trig-hole-depth");
   const trigAngleInput = document.getElementById("trig-angle");
+  const trigWalkoutOutput = document.getElementById("trig-walkout-output");
+  const trigLengthOutput = document.getElementById("trig-length-output");
   const trigResult = document.getElementById("trig-result");
   const calculateTrigButton = document.getElementById("calculate-trig");
 
@@ -124,23 +126,41 @@
     ppvResult.textContent = formatPpvResult(dynoPpv, sd);
   }
 
-  function calculateHoleTrig() {
+  function setTriangleOutputs(walkout, holeLength) {
+    if (!Number.isFinite(walkout) || !Number.isFinite(holeLength)) {
+      trigWalkoutOutput.textContent = "Walkout: --";
+      trigLengthOutput.textContent = "Hole Length: --";
+      return;
+    }
+
+    trigWalkoutOutput.textContent = `Walkout: ${walkout.toFixed(3)}`;
+    trigLengthOutput.textContent = `Hole Length: ${holeLength.toFixed(3)}`;
+  }
+
+  function calculateHoleTrig(showValidation = true) {
     const holeDepth = parseValue(trigHoleDepthInput);
     const angleDegrees = parseValue(trigAngleInput);
 
     if (holeDepth <= 0) {
-      trigResult.textContent = "Enter Hole Depth greater than 0.";
+      if (showValidation) {
+        trigResult.textContent = "Enter Hole Depth greater than 0.";
+      }
+      setTriangleOutputs(Number.NaN, Number.NaN);
       return;
     }
 
     if (angleDegrees < 0 || angleDegrees >= 90) {
-      trigResult.textContent = "Angle must be between 0 and less than 90 degrees.";
+      if (showValidation) {
+        trigResult.textContent = "Angle must be between 0 and less than 90 degrees.";
+      }
+      setTriangleOutputs(Number.NaN, Number.NaN);
       return;
     }
 
     const angleRadians = angleDegrees * (Math.PI / 180);
     const walkout = holeDepth * Math.tan(angleRadians);
     const holeLength = holeDepth / Math.cos(angleRadians);
+    setTriangleOutputs(walkout, holeLength);
 
     trigResult.textContent = [
       `Walkout: ${walkout.toFixed(3)}`,
@@ -678,7 +698,9 @@
   });
 
   calcButton.addEventListener("click", calculatePpv);
-  calculateTrigButton.addEventListener("click", calculateHoleTrig);
+  calculateTrigButton.addEventListener("click", () => calculateHoleTrig(true));
+  trigHoleDepthInput.addEventListener("input", () => calculateHoleTrig(false));
+  trigAngleInput.addEventListener("input", () => calculateHoleTrig(false));
   calculateSiteFactorButton.addEventListener("click", calculateAdjustedSiteFactor);
   calculateEmpiricalButton.addEventListener("click", calculateEmpirical);
 
@@ -688,5 +710,6 @@
   gasCalculateButton.addEventListener("click", calculateGassing);
 
   loadGassingTemplate();
+  calculateHoleTrig(false);
   navigateTo("start");
 })();

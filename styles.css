@@ -221,6 +221,118 @@ body::before {
   line-height: 1.4;
 }
 
+.angle-solver-panel {
+  gap: 16px;
+}
+
+.triangle-stage {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  border: 1px solid #c2d2ea;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(20, 101, 168, 0.12), transparent 32%),
+    linear-gradient(180deg, rgba(248, 252, 255, 0.98), rgba(238, 247, 255, 0.94));
+  overflow: hidden;
+}
+
+.triangle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.triangle-canvas line,
+.triangle-canvas path {
+  stroke: #1f3d66;
+  stroke-width: 1.2;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.triangle-input {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 132px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1b365c;
+}
+
+.triangle-input input {
+  width: 100%;
+  border: 1px solid #9fb8dd;
+  border-radius: 9px;
+  padding: 6px 8px;
+  font: inherit;
+  font-weight: 600;
+  color: #11243f;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.triangle-input-angle {
+  top: 16px;
+  left: 24px;
+}
+
+.triangle-input-depth {
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+}
+
+.triangle-output {
+  position: absolute;
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid #abc3e6;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f2b4f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.triangle-output-length {
+  top: 34%;
+  left: 42%;
+  transform: rotate(24deg);
+  transform-origin: center;
+}
+
+.triangle-output-walkout {
+  left: 52%;
+  bottom: 20px;
+  transform: translateX(-50%);
+}
+
+.triangle-tag {
+  position: absolute;
+  margin: 0;
+  color: #365987;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.triangle-tag-depth {
+  left: 4%;
+  top: 52%;
+  transform: rotate(-90deg) translateY(-50%);
+  transform-origin: left top;
+}
+
+.triangle-tag-angle {
+  left: 13%;
+  top: 24%;
+}
+
 .footer-row {
   margin-top: auto;
 }
@@ -590,5 +702,31 @@ body::before {
   .gassing-matrix {
     min-width: 0;
     grid-template-columns: minmax(120px, 1fr) 92px 92px minmax(30px, auto);
+  }
+
+  .triangle-stage {
+    min-height: 300px;
+  }
+
+  .triangle-input {
+    width: 114px;
+  }
+
+  .triangle-input-angle {
+    top: 10px;
+    left: 12px;
+  }
+
+  .triangle-input-depth {
+    left: 8px;
+  }
+
+  .triangle-output {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .triangle-output-length {
+    left: 44%;
   }
 }
