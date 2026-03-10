@@ -306,7 +306,7 @@ body::before {
 
 .triangle-output-walkout {
   left: 52%;
-  bottom: 26px;
+  bottom: 14px;
   transform: translateX(-50%);
 }
 
