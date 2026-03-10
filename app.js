@@ -74,6 +74,7 @@
   const gasFinalChart = document.getElementById("gas-final-chart");
   const gasRise = document.getElementById("gas-rise");
   const gasCalculateButton = document.getElementById("gas-calculate");
+  const GASSING_STATE_KEY = "blast-program-web:gassing-state:v1";
 
   let gassingTemplateValues = {};
   let gassingFormulaMap = {};
@@ -653,6 +654,60 @@
 
     gasResult.textContent = `Hole Average Density: ${holeAvgDensity.toFixed(2)} g/cm3\nTotal Pounds for Hole: ${totalPounds.toFixed(2)} lbs`;
     gasStatus.textContent = "";
+    saveGassingInputState();
+  }
+
+  function collectGassingInputState() {
+    return {
+      wetHole: gasWetHoleInput.checked,
+      altNeeded: gasAltNeededInput.checked,
+      holeDiameter: gasHoleDiameterInput.value,
+      holeDepth: gasHoleDepthInput.value,
+      altDiameter: gasAltDiameterInput.value,
+      bottomColumn: gasBottomColumnInput.value,
+      topColumn: gasTopColumnInput.value,
+      bottomDensity: gasBottomDensityInput.value,
+      topDensity: gasTopDensityInput.value,
+    };
+  }
+
+  function saveGassingInputState() {
+    try {
+      const state = collectGassingInputState();
+      window.localStorage.setItem(GASSING_STATE_KEY, JSON.stringify(state));
+    } catch (_err) {
+      // Ignore storage errors (privacy mode, storage disabled, quota, etc.).
+    }
+  }
+
+  function loadGassingInputState() {
+    try {
+      const raw = window.localStorage.getItem(GASSING_STATE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object") return null;
+      return parsed;
+    } catch (_err) {
+      return null;
+    }
+  }
+
+  function applySavedGassingInputState() {
+    const state = loadGassingInputState();
+    if (!state) return false;
+
+    gasWetHoleInput.checked = Boolean(state.wetHole);
+    gasAltNeededInput.checked = Boolean(state.altNeeded);
+    if (typeof state.holeDiameter === "string") gasHoleDiameterInput.value = state.holeDiameter;
+    if (typeof state.holeDepth === "string") gasHoleDepthInput.value = state.holeDepth;
+    if (typeof state.altDiameter === "string") gasAltDiameterInput.value = state.altDiameter;
+    if (typeof state.bottomColumn === "string") gasBottomColumnInput.value = state.bottomColumn;
+    if (typeof state.topColumn === "string") gasTopColumnInput.value = state.topColumn;
+    if (typeof state.bottomDensity === "string") gasBottomDensityInput.value = state.bottomDensity;
+    if (typeof state.topDensity === "string") gasTopDensityInput.value = state.topDensity;
+    gasAltDiameterInput.disabled = !gasAltNeededInput.checked;
+
+    return true;
   }
 
   function applyGassingTemplateDefaults() {
@@ -682,7 +737,10 @@
       gassingTemplateValues = payload.values || {};
       gassingFormulaMap = payload.formulas || {};
       applyGassingTemplateDefaults();
-      gasStatus.textContent = "Workbook template loaded.";
+      const restored = applySavedGassingInputState();
+      gasStatus.textContent = restored
+        ? "Workbook template loaded. Restored your last gassing inputs."
+        : "Workbook template loaded.";
     } catch (err) {
       gassingTemplateValues = {};
       gassingFormulaMap = {};
@@ -704,7 +762,16 @@
 
   gasAltNeededInput.addEventListener("change", () => {
     gasAltDiameterInput.disabled = !gasAltNeededInput.checked;
+    saveGassingInputState();
   });
+  gasWetHoleInput.addEventListener("change", saveGassingInputState);
+  gasHoleDiameterInput.addEventListener("change", saveGassingInputState);
+  gasHoleDepthInput.addEventListener("input", saveGassingInputState);
+  gasAltDiameterInput.addEventListener("input", saveGassingInputState);
+  gasBottomColumnInput.addEventListener("input", saveGassingInputState);
+  gasTopColumnInput.addEventListener("input", saveGassingInputState);
+  gasBottomDensityInput.addEventListener("input", saveGassingInputState);
+  gasTopDensityInput.addEventListener("input", saveGassingInputState);
   gasCalculateButton.addEventListener("click", calculateGassing);
 
   loadGassingTemplate();
